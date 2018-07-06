@@ -15,16 +15,16 @@ Description:±¾Àı³ÌÌá¹©ÁËC/C++µÄ×Ö·û¡¢×Ö·û´®µÄÊäÈëÊä³ö »ù±¾²Ù×÷£¬ÒÔ¼°C/C++Ö®¼äµÄ»
 /*
 
 1. ¶¨Òå¼°³õÊ¼»¯£º
-	string s;          //¿Õ´®
-	string s(str);     //¸´ÖÆ¹¹Ôì
+	string s;                  //¿Õ´®
+	string s(str);             //¸´ÖÆ¹¹Ôì
 	string s(str, index)       //  ½«×Ö·û´®Ê¼ÓÚindexµÄ×Ó´®³õÊ¼»¯s 
 	string s(str, index, strlen) //  ½«×Ö·û´®Ê¼ÓÚindexµÄ³¤¶ÈÎªstrlenµÄ×Ó´®³õÊ¼»¯s
-	string s(cstr)   //ÓÃc·ç¸ñµÄ×Ö·û´®³õÊ¼»¯s
-	string s(cstr, strlen)   //½«c·ç¸ñµÄÇ°strlen¸ö×Ö·ûµÄ×Ó´®×÷Îª³õÊ¼»¯µÄÖµ£»
-	string s(num, c)        //num ¸öc ³õÊ¼»¯s
-	string s(beg, end)     //ÓÃÒ»¶Ôµü´úÆ÷³õÊ¼»¯×Ö·û´®s
-	s1.assign()    //¸³ĞÂÖµ£¬ assign(str, index1, index2); assign("");assign(num, c)
-	s.~string()            //Ïú»ÙËùÓĞ×Ö·û£¬²¢ÊÍ·Å¿Õ¼ä
+	string s(cstr)           //ÓÃc·ç¸ñµÄ×Ö·û´®³õÊ¼»¯s
+	string s(cstr, strlen)   //½«c·ç¸ñµÄÇ°strlen¸ö×Ö·ûµÄ×Ó´®×÷Îª³õÊ¼»¯µÄÖµ
+	string s(num, c)         //num ¸öc ³õÊ¼»¯s
+	string s(beg, end)       //ÓÃÒ»¶Ôµü´úÆ÷³õÊ¼»¯×Ö·û´®s
+	s1.assign()              //¸³ĞÂÖµ£¬ assign(str, index1, index2); assign("");assign(num, c)
+	s.~string()              //Ïú»ÙËùÓĞ×Ö·û£¬²¢ÊÍ·Å¿Õ¼ä
 
 2. ×Ö·û´®µÄ×Ö·û²Ù×÷
 	const char &operator[](int n)const;     // str[num];   ÁíÓĞ·Ç³£Á¿°æ±¾
@@ -188,7 +188,7 @@ sscanf()    ÌáÈ¡´ø¿Õ¸ñ×Ö·û´®£¬¸ñÊ½»¯ÌáÈ¡ int sscanf(const char* str,const char* 
             (1) sscanf("aa bb cc", "%s%s%s", ptr1, ptr2, ptr3);    //*ptr1 , *ptr2, *ptr3 = "aa", "bb", "cc" ÌáÈ¡¿Õ¸ñ¸ô¿ª
 			(2) sscanf("zhoue3456", "%4s", str);                   //*str = "zhou"
 			(3) sscanf("654321abcdefABCDEF", "%[0-9a-z]", str);    //*str = "654321abcdef"; 
-			(4) sscanf("zhou456hedf", "%[^6]", str);                //*str = "zhou45"; 
+			(4) sscanf("zhou456hedf", "%[^6]", str);                //*str = "zhou45";  ^Óöµ½¾ÍÍ£Ö¹
 			(5) sscanf("zhou456hedf", "%[^1-9]", str);              //*str = "zhou"
 			(6) sscanf("2018.05.18", "%d.%d.%d", &num1, &num2, &num3)  //num1 = 2018 num2 = 5 num3 = 18;
 
@@ -366,9 +366,10 @@ strncpy()       //char* strncpy(char *dest, char *src, size_t size_max);
 (2) getchar()     ÒÔEnter½áÊøÊäÈë£¬Ò²²»»áÉáÆú×îºóµÄ»Ø³µ·û£»
 (3) gets()        ÒÔEnter½áÊøÊäÈë£¬½ÓÊÜ¿Õ¸ñ£¬»áÉáÆú×îºóµÄ»Ø³µ·û£¡                        ......ÉáÆú»Ø³µ·û.......
 
-(4) cin >>        ÒÔSpace¡¢Enter¡¢Tab½áÊøÒ»´ÎÊäÈë£¬»áÉáÆú×îºóµÄ»Ø³µ·û£¡                  ......ÉáÆú»Ø³µ·û.......
+(4) cin >>        ÒÔSpace¡¢Enter¡¢Tab½áÊøÒ»´ÎÊäÈë£¬²»»áÉáÆú×îºóµÄ»Ø³µ·û£¡                
 (5) cin.get()     ÒÔEnter½áÊøÊäÈë£¬Ò²²»»áÉáÆú×îºóµÄ»Ø³µ·û£»cin.get(), cin.get(char ch), cin.get(array_name, Arsize) //char a[20]; cin.get(a, 10);
 (6) cin.getline() ÒÔEnter½áÊøÊäÈë, »áÉáÆú×îºóµÄ»Ø³µ·û£¡                                  ......ÉáÆú»Ø³µ·û.......
+
 
 */
 
